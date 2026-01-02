@@ -17,7 +17,6 @@ def apply_func_to_all_docs(func):
     def process_docs(docs):
         for doc in docs:
             doc.page_content = func(doc.page_content)
-        print(docs)
         return docs
     return process_docs
 
@@ -47,7 +46,7 @@ def normalize_text(text: str) -> str:
 
 
 def deduplicate_and_filter(docs: List[Document]) -> List[Document]:
-    return [doc for doc in docs if  len(doc.metadata['content_len']) < 400]
+    return [doc for doc in docs if  doc.metadata['content_len'] > 400]
 
 
 def result_display():
